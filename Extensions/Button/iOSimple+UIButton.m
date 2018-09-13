@@ -14,6 +14,9 @@
     [self addTarget:self action:@selector(buttonAction_touchDown:) forControlEvents:UIControlEventTouchDown];
     [self addTarget:self action:@selector(buttonAction_touchCancel:) forControlEvents:UIControlEventTouchCancel | UIControlEventTouchDragExit | UIControlEventTouchDragEnter | UIControlEventTouchUpOutside | UIControlEventTouchDragOutside];
     [self addTarget:self action:@selector(buttonAction_touchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    if (sel && sender) {
+        [self addTarget:sender action:SEL forControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
 - (void)buttonAction_touchDown:(UIButton *)button {
@@ -32,7 +35,6 @@
     [UIView animateWithDuration:0.2 animations:^{
         self.transform              =   CGAffineTransformMakeScale(1, 1);
     } completion:^(BOOL finished) {
-        
     }];
 }
 
