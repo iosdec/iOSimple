@@ -7,6 +7,7 @@
 //
 
 #import "iOSAlert.h"
+#import "iOSimple+UIButton.h"
 #import "iOSimple+UIViewController.h"
 #import "iOSimple+UITextField.h"
 #import "TouchID.h"

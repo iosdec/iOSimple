@@ -1,9 +1,9 @@
 //
-//  iOSDec_Button.h
-//  Kho
+//  iOSimple+UIButton.h
+//  iOSDec
 //
-//  Created by R3V0 on 29/05/2018.
-//  Copyright © 2018 kholabs. All rights reserved.
+//  Created by Declan Land
+//  Copyright Declan Land. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -18,7 +18,7 @@ typedef enum {
 @property (strong, nonatomic) id tempSender;
 @end
 
-@interface UIButton (iOSDec_Button)
+@interface UIButton (iOSimple_UIButton)
 
 - (void)addButtonTargets:(ButtonActionType)type selector:(SEL)sel sender:(id)sender;
 

@@ -1,14 +1,14 @@
 //
-//  iOSDec_Button.m
-//  Kho
+//  iOSimple+UIButton.m
+//  iOSDec
 //
-//  Created by R3V0 on 29/05/2018.
-//  Copyright © 2018 kholabs. All rights reserved.
+//  Created by Declan Land
+//  Copyright Declan Land. All rights reserved.
 //
 
-#import "iOSDec_Button.h"
+#import "iOSimple+UIButton.h"
 
-@implementation UIButton (iOSDec_Button)
+@implementation UIButton (iOSimple_UIButton)
 
 - (void)addButtonTargets:(ButtonActionType)type selector:(SEL)sel sender:(id)sender {
     [self addTarget:self action:@selector(buttonAction_touchDown:) forControlEvents:UIControlEventTouchDown];
