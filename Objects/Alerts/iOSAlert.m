@@ -9,7 +9,7 @@
 #import "iOSAlert.h"
 #import "Finder.h"
 
-@implementation NSObject (iOSAlert)
+@implementation iOSAlert : NSObject
 
 + (UIViewController *)controller {
     UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;

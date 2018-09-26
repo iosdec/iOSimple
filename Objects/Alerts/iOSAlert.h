@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
-@interface NSObject (iOSAlert)
+@interface iOSAlert : NSObject
 
 + (void)alertWithTitle:(NSString *)title message:(NSString *)message;
 + (void)alertWithTitle:(NSString *)title message:(NSString *)message completion:(void(^)(void))completion;

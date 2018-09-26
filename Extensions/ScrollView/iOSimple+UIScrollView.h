@@ -15,6 +15,10 @@
 - (NSInteger)currentPage;
 - (void)setStickyHeader:(id)view;
 - (void)addReloaderWithAction:(SEL)selector sender:(id)sender;
+- (void)clearWithClass:(Class)class completion:(void(^)(void))completion;
+- (void)clearWithClasses:(NSArray *)classes completion:(void(^)(void))completion;
+- (void)resetContentSize;
+- (NSArray *)filteredSubviewsWithClass:(Class)className;
 
 @end
 

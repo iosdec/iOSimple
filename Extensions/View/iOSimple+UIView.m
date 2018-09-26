@@ -38,6 +38,7 @@
 }
 
 - (void)addMagicButtonWithAction:(SEL)selector sender:(id)sender {
+    
     self.userInteractionEnabled =   YES;
     UIButton *button            =   [[UIButton alloc] init];
     button.frame                =   CGRectMake(0, 0, self.frame.size.width, self.frame.size.width);
@@ -46,7 +47,25 @@
     [button addTarget:self action:@selector(buttonAction_touchCancel:) forControlEvents:UIControlEventTouchCancel | UIControlEventTouchDragExit | UIControlEventTouchDragEnter | UIControlEventTouchUpOutside | UIControlEventTouchDragOutside];
     [button addTarget:self action:@selector(buttonAction_touchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [button addTarget:sender action:selector forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:button];
+    
+    //  check for other buttons:
+    
+    UIButton *firstButton       =   [self firstButtonInIndex];
+    
+    if (firstButton) {
+        [self insertSubview:button belowSubview:firstButton];
+    } else {
+        [self addSubview:button];
+    }
+    
+}
+
+- (UIButton *)firstButtonInIndex {
+    for (id obj in self.subviews) {
+        if ([obj isKindOfClass:[UIButton class]]) {
+            return (UIButton *)obj;
+        }
+    } return nil;
 }
 
 - (void)buttonAction_touchDown:(UIButton *)button {

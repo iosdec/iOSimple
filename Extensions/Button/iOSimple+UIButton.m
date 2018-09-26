@@ -15,7 +15,7 @@
     [self addTarget:self action:@selector(buttonAction_touchCancel:) forControlEvents:UIControlEventTouchCancel | UIControlEventTouchDragExit | UIControlEventTouchDragEnter | UIControlEventTouchUpOutside | UIControlEventTouchDragOutside];
     [self addTarget:self action:@selector(buttonAction_touchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     if (sel && sender) {
-        [self addTarget:sender action:SEL forControlEvents:UIControlEventTouchUpInside];
+        [self addTarget:sender action:sel forControlEvents:UIControlEventTouchUpInside];
     }
 }
 

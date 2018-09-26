@@ -58,6 +58,73 @@ CGRect _stickyRect;
     [control endRefreshing];
 }
 
+#pragma mark    -   Clear:
+
+- (void)clearWithClass:(Class)class completion:(void (^)(void))completion {
+    
+    NSArray *subviews           =   self.subviews;
+    
+    if (class) {
+        NSPredicate *predicate  =   [NSPredicate predicateWithFormat:@"self isKindOfClass: %@",class];
+        subviews                =   [self.subviews filteredArrayUsingPredicate:predicate];
+    }
+    
+    if (!subviews) { completion(); return; }
+    if (subviews.count == 0) { completion(); return; }
+    NSUInteger current      =   0;
+    for (id obj in subviews) {
+        current++;
+        [UIView animateWithDuration:0.4 animations:^{
+            [obj setAlpha:0];
+        } completion:^(BOOL finished) {
+            [obj removeFromSuperview];
+            if (current == subviews.count) {
+                completion();
+            }
+        }];
+    }
+}
+
+- (void)clearWithClasses:(NSArray *)classes completion:(void (^)(void))completion {
+    
+    if (!classes) { completion(); return; }
+    if (classes.count == 0) { completion(); return; }
+    
+    __block NSUInteger current  =   0;
+    NSUInteger total            =   classes.count;
+    
+    for (Class className in classes) {
+        [self clearWithClass:className completion:^{
+            current++;
+            if (current == total) {
+                completion();
+            }
+        }];
+    }
+}
+
+#pragma mark    -   Reset Content Size:
+
+- (void)resetContentSize {
+    [self setContentSize:CGSizeMake(0, 0)];
+}
+
+#pragma mark    -   Filtered Subviews:
+
+- (NSArray *)filteredSubviewsWithClass:(Class)className {
+    
+    NSMutableArray *objects             =   [[NSMutableArray alloc] init];
+    
+    for (id obj in self.subviews) {
+        if ([obj isKindOfClass:className]) {
+            [objects addObject:obj];
+        }
+    }
+    
+    return objects;
+    
+}
+
 @end
 
 //
