@@ -31,10 +31,12 @@
 - (void)sameRectWithView:(UIView *)view {
     self.frame = CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
 }
+- (void)sameRectWithNewWidth:(CGFloat)width x:(CGFloat)x {
+    self.frame = CGRectMake(x, self.frame.origin.y, width, self.frame.size.height);
+}
 - (void)sameRectWithNewWidth:(CGFloat)width height:(CGFloat)height {
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, width, height);
 }
-
 - (void)sameRectWithNewWidth:(CGFloat)width height:(CGFloat)height y:(CGFloat)y {
     self.frame = CGRectMake(self.frame.origin.x, y, width, height);
 }
@@ -87,6 +89,10 @@
 
 + (CGFloat)bottomPositionOfView:(UIView *)view {
     return view.frame.origin.y + view.frame.size.height;
+}
+
++ (CGFloat)rightPositionOfView:(UIView *)view {
+    return view.frame.origin.x + view.frame.size.width;
 }
 
 @end

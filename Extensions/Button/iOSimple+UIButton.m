@@ -7,6 +7,7 @@
 //
 
 #import "iOSimple+UIButton.h"
+#import "iOSimple+UIView.h"
 
 @implementation UIButton (iOSimple_UIButton)
 

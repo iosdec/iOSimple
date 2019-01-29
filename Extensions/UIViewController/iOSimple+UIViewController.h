@@ -19,6 +19,12 @@
 - (void)clearHandlerWithName:(NSString *)name sender:(id)sender;
 - (void)clearAllHandlers;
 
+/*!
+ @brief Searches for view with tag.
+ @discussion Returns controller.view if not found.
+*/
+- (UIView *)viewWithTag:(NSUInteger)tag;
+
 @end
 
 @interface NSHandler : NSObject

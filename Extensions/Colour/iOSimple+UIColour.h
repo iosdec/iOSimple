@@ -13,6 +13,7 @@
 
 + (UIColor *)colourWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
 + (UIColor *)colourFromHexString:(NSString *)hexString;
+- (NSString *)hexVersion;
 
 @end
 

@@ -18,6 +18,7 @@
 - (void)sameRectWithNewHeight:(CGFloat)height;
 - (void)sameRectWithNewHeight:(CGFloat)height y:(CGFloat)y;
 - (void)sameRectWithView:(UIView *)view;
+- (void)sameRectWithNewWidth:(CGFloat)width x:(CGFloat)x;
 - (void)sameRectWithNewWidth:(CGFloat)width height:(CGFloat)height;
 - (void)sameRectWithNewWidth:(CGFloat)width height:(CGFloat)height y:(CGFloat)y;
 
@@ -31,5 +32,6 @@
 + (CGFloat)recalculatedViewHeight:(UIView *)view textView:(UITextView *)label minHeight:(CGFloat)min;
 
 + (CGFloat)bottomPositionOfView:(UIView *)view;
++ (CGFloat)rightPositionOfView:(UIView *)view;
 
 @end

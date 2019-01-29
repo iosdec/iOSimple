@@ -85,6 +85,33 @@ CGRect _stickyRect;
     }
 }
 
+- (void)clearWithClass:(Class)class animated:(BOOL)animated completion:(void (^)(void))completion {
+    
+    if (animated) {
+        [self clearWithClass:class completion:completion];
+        return;
+    }
+    
+    NSArray *subviews           =   self.subviews;
+    
+    if (class) {
+        NSPredicate *predicate  =   [NSPredicate predicateWithFormat:@"self isKindOfClass: %@",class];
+        subviews                =   [self.subviews filteredArrayUsingPredicate:predicate];
+    }
+    
+    if (!subviews) { completion(); return; }
+    if (subviews.count == 0) { completion(); return; }
+    NSUInteger current      =   0;
+    for (id obj in subviews) {
+        current++;
+        [obj setAlpha:0];
+        [obj removeFromSuperview];
+        if (current == subviews.count) {
+            completion();
+        }
+    }
+}
+
 - (void)clearWithClasses:(NSArray *)classes completion:(void (^)(void))completion {
     
     if (!classes) { completion(); return; }

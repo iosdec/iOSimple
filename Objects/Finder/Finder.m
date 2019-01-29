@@ -38,4 +38,49 @@
     } return (UIViewController *)responder;
 }
 
++ (CGPoint)actualPositionOfView:(UIView *)sourceView controller:(UIViewController *)controller {
+    
+    UIView *temporaryView       =   sourceView;
+    CGFloat x                   =   0;
+    CGFloat y                   =   0;
+    
+    while (temporaryView) {
+        
+        if (temporaryView == controller.view) {
+            break;
+        }
+        
+        x += temporaryView.frame.origin.x;
+        y += temporaryView.frame.origin.y;
+        
+        //  only update the view origins if we've
+        //  checked the break..
+        
+        NSLog(@"origins updated with view : %@", temporaryView);
+        
+        temporaryView           =   temporaryView.superview;
+        
+    }
+    
+    NSLog(@"returning point | x: %f | y: %f", x, y);
+    
+    return CGPointMake(x, y);
+    
+}
+
++ (UIView *)rootViewWithView:(UIView *)view {
+    
+    UIView *cycleView           =   view;
+    
+    while (cycleView) {
+        
+        if (!cycleView.superview) { break; }
+        else { cycleView = cycleView.superview; }
+        
+    }
+    
+    return cycleView;
+    
+}
+
 @end

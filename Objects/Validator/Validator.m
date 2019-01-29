@@ -90,6 +90,18 @@
     }
 }
 
++ (BOOL)checkArray:(NSArray *)array containsClass:(Class)class {
+    
+    if (!array) { return NO; }
+    if (array.count == 0) { return NO; }
+    
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"self isKindOfClass: %@", class];
+    NSArray *filter = [array filteredArrayUsingPredicate:pred];
+    if (filter.count == 0) { return NO; }
+    return YES;
+    
+}
+
 + (BOOL)isValidEntity:(id)entity {
     if (entity != [NSNull null] && ![entity isKindOfClass:[NSNull class]]) {
         
@@ -176,6 +188,12 @@
         }
     }
     
+    return [fm stringFromDate:date];
+}
+
++ (NSString *)validateDateToTime:(NSDate *)date {
+    NSDateFormatter *fm     =   [[NSDateFormatter alloc] init];
+    fm.dateFormat           =   @"HH:mm";
     return [fm stringFromDate:date];
 }
 

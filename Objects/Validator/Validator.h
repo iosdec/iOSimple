@@ -14,10 +14,12 @@
 + (void)checkForEntryString:(NSString *)string response:(NSDictionary *)response result:(void(^)(NSString *result))resultHandler;
 + (void)checkForEntryDictionary:(NSString *)string response:(NSDictionary *)response result:(void(^)(NSDictionary *result))resultHandler;
 + (void)checkForEntryArray:(NSString *)string response:(NSDictionary *)response result:(void(^)(NSArray *result))resultHandler;
++ (BOOL)checkArray:(NSArray *)array containsClass:(Class)class;
 + (BOOL)isValidEntity:(id)entity;
 + (BOOL)isValidEmail:(NSString *)email;
 + (BOOL)isValidPassword;
 + (NSDate *)validateDate:(NSString *)dateString;
 + (NSString *)validateDateToString:(NSDate *)date withTime:(BOOL)withTime pretty:(BOOL)pretty;
++ (NSString *)validateDateToTime:(NSDate *)date;
 
 @end

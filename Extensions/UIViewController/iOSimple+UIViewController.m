@@ -28,6 +28,11 @@
 - (void)clearAllHandlers {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+- (UIView *)viewWithTag:(NSUInteger)tag {
+    UIView *taggedView = [self.view viewWithTag:tag];
+    if (taggedView) { return taggedView; }
+    else { return self.view; }
+}
 
 @end
 
